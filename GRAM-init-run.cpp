@@ -27,8 +27,8 @@
 #include <vector>
 #include <algorithm>
 
-#include "GRAM/Atmod.h"
-#include "GRAM/Var.h"
+#include "..\\EarthGRAM2016Version2\\EarthGRAM2016Version2.0\\Source\\Atmod.h"
+#include "..\\EarthGRAM2016Version2\\EarthGRAM2016Version2.0\\Source\\Var.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -1749,6 +1749,29 @@ double* sosm, double* sosp){
                             tsm, usm, vsm, wsm, sosm, sosp);
 }
 
+void deleteAtm(Atm_* atm){
+
+	if (!atm) {
+		return;
+	}
+    else {
+        atm = NULL;
+		return;
+	}
+
+   
+}
+
+void finalize() {
+    //std::cout<<"\ndeleting RPA_Local..";
+    //std::cout.flush();
+    if (Atm_Database.size()>0){
+        for (int i = 0; i<Atm_Database.size(); i++){
+	      deleteAtm(Atm_Database[i]);
+        }
+        Atm_Database.clear();
+    }
+}
 /*
 int main(){
     
