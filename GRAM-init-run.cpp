@@ -84,266 +84,201 @@ class Atm_ : public  Atm{
                     msisa1.maps.perts.iperts.rras.init(RRAp);
     };
 
-    void set_member_data(){
+     void set_member_data(){
+        		//namelist member function from Init class
+		//Open and read namelist input file for setting model parameters.
 
-            //namelist member function from Init class
-            //Open and read namelist input file for setting model parameters.
+		double iday1[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
-            
-            double iday1[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-           
+		ifstream namelist;
+		string dummy, NCEPmn;
+		string mn1 = "12";
+		NCEPmn = "Nb9008" + mn1 + ".bin";
+
+		msisa1.maps.perts.iperts.inits1.rralist = "rrasites.txt";
+		msisa1.maps.perts.iperts.inits1.profile = "RRAanfAnn.txt";
+		msisa1.maps.perts.iperts.inits1.h1 = 140;
+		msisa1.maps.perts.iperts.inits1.phi1 = 0.45;
+		msisa1.maps.perts.iperts.inits1.thet1 = -164.53;
+		//msisa1.maps.perts.iperts.inits1.f10 = 230;
+		//msisa1.maps.perts.iperts.inits1.f10b  = 230;
+		//msisa1.maps.perts.iperts.inits1.ap = 16.3;
+		//msisa1.maps.perts.iperts.inits1.s10 = 0;
+		//msisa1.maps.perts.iperts.inits1.s10b = 0;
+		//msisa1.maps.perts.iperts.inits1.xm10 = 0;
+		//msisa1.maps.perts.iperts.inits1.xm10b = 0;
+		//msisa1.maps.perts.iperts.inits1.y10 = 0;
+		//msisa1.maps.perts.iperts.inits1.y10b = 0;
+		//msisa1.maps.perts.iperts.inits1.dstdtc = 0;
+		//msisa1.maps.perts.iperts.inits1.mn = 1;
+		//msisa1.maps.perts.iperts.inits1.ida = 1;
+		//msisa1.maps.perts.iperts.inits1.iyr = 2018;
+		//msisa1.maps.perts.iperts.inits1.ihro = 0;
+		//msisa1.maps.perts.iperts.inits1.mino = 0;
+		//msisa1.maps.perts.iperts.inits1.seco = 0.0;
+		msisa1.maps.perts.iperts.inits1.dphi = 0.4;
+		msisa1.maps.perts.iperts.inits1.dthet = 1.2;
+		msisa1.maps.perts.iperts.inits1.dhgt = -2.0;
+		msisa1.maps.perts.iperts.inits1.nmax = 71;
+		msisa1.maps.perts.iperts.inits1.delt = 60.0;
+		msisa1.maps.perts.iperts.inits1.iopt = 0;
+		msisa1.maps.perts.iperts.inits1.iaux = 0;
+		msisa1.maps.perts.iperts.inits1.iprt = 1;
+		msisa1.maps.perts.iperts.inits1.inpr = 1;
+		msisa1.maps.perts.iperts.inits1.icon = 1;
+		msisa1.maps.perts.iperts.inits1.NCEPyr = 9715;
+		msisa1.maps.perts.iperts.inits1.NCEPhr = 5;
+		msisa1.maps.perts.iperts.inits1.mc = 2;
+		//msisa1.maps.perts.iperts.inits1.rpscale = 1.0;
+		//msisa1.maps.perts.iperts.inits1.ruscale = 1.0; 
+		//msisa1.maps.perts.iperts.inits1.rwscale = 1.0;
+		msisa1.maps.perts.iperts.inits1.iurra = 1;
+		msisa1.maps.perts.iperts.inits1.iyrra = 3;
+		msisa1.maps.perts.iperts.inits1.sitelim = 2.5;
+		msisa1.maps.perts.iperts.inits1.sitenear = 0.5;
+		msisa1.maps.perts.iperts.inits1.initpert = 0;
+		msisa1.maps.perts.iperts.inits1.rdinit = 0.0;
+		msisa1.maps.perts.iperts.inits1.rtinit = 0.0;
+		msisa1.maps.perts.iperts.inits1.ruinit = 0.0;
+		msisa1.maps.perts.iperts.inits1.rvinit = 0.0;
+		msisa1.maps.perts.iperts.inits1.rwinit = 0.0;
+		msisa1.maps.perts.iperts.inits1.patchy = 0.0;
+		msisa1.maps.perts.iperts.inits1.itherm = 1;
+		//msisa1.maps.perts.iperts.inits1.z0in = -1;
+		msisa1.maps.perts.iperts.inits1.ibltest = 99;
+
+		//start added by victor
+		 msisa1.maps.perts.iperts.inits1.ibltest=1;
+		//end added by victor
+
+		//Check bounds on z0in value
+		if (msisa1.maps.perts.iperts.inits1.z0in > 0.0){
+			if (msisa1.maps.perts.iperts.inits1.z0in < 1.0e-05) msisa1.maps.perts.iperts.inits1.z0in = 1.0e-05;
+			if (msisa1.maps.perts.iperts.inits1.z0in > 3.0) msisa1.maps.perts.iperts.inits1.z0in = 3.0;
+		}
+
+		//Check sitelim and sitenear
+		if (msisa1.maps.perts.iperts.inits1.sitelim <= 0.0 || msisa1.maps.perts.iperts.inits1.sitenear >= msisa1.maps.perts.iperts.inits1.sitelim){
+			cout << "Bad RRA site limits (sitenear must be < sitelim)  " << msisa1.maps.perts.iperts.inits1.sitenear <<
+				"  " << msisa1.maps.perts.iperts.inits1.sitelim << '\n';
+			system("pause");
+			exit(1);
+		}
+
+		//Terminate if month out of range
+		if (msisa1.maps.perts.iperts.inits1.mn < 1 || msisa1.maps.perts.iperts.inits1.mn > 12){
+			cout << "Month out of range.  " << mn << '\n';
+			system("pause");
+			exit(1);
+		}
+
+		//Terminate if day out of range
+		if ((msisa1.maps.perts.iperts.inits1.ida > iday1[msisa1.maps.perts.iperts.inits1.mn - 1]) || (msisa1.maps.perts.iperts.inits1.ida < 0)){
+			cout << "Bad day input.  " << msisa1.maps.perts.iperts.inits1.ida << '\n';
+			system("pause");
+			exit(1);
+		}
+
+		//Terminate initial hour if out of range
+		if ((msisa1.maps.perts.iperts.inits1.ihro > 23) || (msisa1.maps.perts.iperts.inits1.ihro < 0)){
+			cout << "Bad hour input.  " << msisa1.maps.perts.iperts.inits1.ihro << '\n';
+			system("pause");
+			exit(1);
+		}
+
+		//Terminate if initial minute out of range
+		if ((msisa1.maps.perts.iperts.inits1.mino > 60) || (msisa1.maps.perts.iperts.inits1.mino < 0)){
+			cout << "Bad minute input.  " << msisa1.maps.perts.iperts.inits1.mino << '\n';
+			system("pause");
+			exit(1);
+		}
+
+		//Terminate if initial second out of range
+		if ((msisa1.maps.perts.iperts.inits1.seco > 60.0) || (msisa1.maps.perts.iperts.inits1.seco < 0.0)){
+			cout << "Bad second input.  " << msisa1.maps.perts.iperts.inits1.seco << '\n';
+			system("pause");
+			exit(1);
+		}
+
+		//Terminate if out of range NCEPhr
+		if (msisa1.maps.perts.iperts.inits1.NCEPhr < 0 || msisa1.maps.perts.iperts.inits1.NCEPhr > 5){
+			cout << "Bad NCEPhr value." << '\n';
+			system("pause");
+			exit(1);
+		}
+		//Terminate if auxiliary profile and RRA data turned on
+		if (msisa1.maps.perts.iperts.inits1.iaux > 0 && msisa1.maps.perts.iperts.inits1.iurra > 0){
+			cout << "Can not use RRA data and auxiliary profile data simultaneously."
+				<< '\n';
+			system("pause");
+			exit(1);
+		}
+
+		if (msisa1.maps.perts.iperts.inits1.itherm == 1) msisa1.maps.perts.iperts.inits1.therm = "MET";
+		if (msisa1.maps.perts.iperts.inits1.itherm == 2) msisa1.maps.perts.iperts.inits1.therm = "MSIS";
+		if (msisa1.maps.perts.iperts.inits1.itherm == 3) msisa1.maps.perts.iperts.inits1.therm = "JB2008";
+
+		if (msisa1.maps.perts.iperts.inits1.patchy > 0) msisa1.maps.perts.iperts.inits1.patch = "On";
+		if (msisa1.maps.perts.iperts.inits1.patchy == 0) msisa1.maps.perts.iperts.inits1.patch = "Off";
+
+		if (msisa1.maps.perts.iperts.inits1.iyrra == 1) msisa1.maps.perts.iperts.inits1.Ryear = "1983";
+		if (msisa1.maps.perts.iperts.inits1.iyrra == 2) msisa1.maps.perts.iperts.inits1.Ryear = "2006";
+		if (msisa1.maps.perts.iperts.inits1.iyrra == 3) msisa1.maps.perts.iperts.inits1.Ryear = "2013";
+
+		h1a = h1;
+		phi1a = phi1;
+		thet1a = thet1;
+		
+		f101 = msisa1.maps.perts.iperts.inits1.f10;
+		f10b1 = msisa1.maps.perts.iperts.inits1.f10b;
+		ap1 = msisa1.maps.perts.iperts.inits1.ap;
+		s101 = msisa1.maps.perts.iperts.inits1.s10;
+		s10b1 = msisa1.maps.perts.iperts.inits1.s10b;
+		xm101 = msisa1.maps.perts.iperts.inits1.xm10;
+		xm10b1 = msisa1.maps.perts.iperts.inits1.xm10b;
+		y101 = msisa1.maps.perts.iperts.inits1.y10;
+		y10b1 = msisa1.maps.perts.iperts.inits1.y10b;
+		dstdtc1 = msisa1.maps.perts.iperts.inits1.dstdtc;
+		mn2 = msisa1.maps.perts.iperts.inits1.mn;
+		ida1 = msisa1.maps.perts.iperts.inits1.ida;
+		iyr1 = msisa1.maps.perts.iperts.inits1.iyr;
+		ihro1 = msisa1.maps.perts.iperts.inits1.ihro;
+		mino1 = msisa1.maps.perts.iperts.inits1.mino;
+		seco1 = msisa1.maps.perts.iperts.inits1.seco;
+		dphi1 = msisa1.maps.perts.iperts.inits1.dphi;
+		dthet1 = msisa1.maps.perts.iperts.inits1.dthet;
+		dhgt2 = msisa1.maps.perts.iperts.inits1.dhgt;
+		nmax1 = msisa1.maps.perts.iperts.inits1.nmax;
+		delt1 = msisa1.maps.perts.iperts.inits1.delt;
+		iopt1 = msisa1.maps.perts.iperts.inits1.iopt;
+		iaux1 = msisa1.maps.perts.iperts.inits1.iaux;
+		iprt1 = msisa1.maps.perts.iperts.inits1.iprt;
+		inpr1 = msisa1.maps.perts.iperts.inits1.inpr;
+		icon1 = msisa1.maps.perts.iperts.inits1.icon;
+		NCEPyr3 = msisa1.maps.perts.iperts.inits1.NCEPyr;
+		NCEPhr3 = msisa1.maps.perts.iperts.inits1.NCEPhr;
+		mc1 = msisa1.maps.perts.iperts.inits1.mc;
+		rpscale1 = msisa1.maps.perts.iperts.inits1.rpscale;
+		ruscale1 = msisa1.maps.perts.iperts.inits1.ruscale;
+		rwscale1 = msisa1.maps.perts.iperts.inits1.rwscale;
+		iurra1 = msisa1.maps.perts.iperts.inits1.iurra;
+		iyrra1 = msisa1.maps.perts.iperts.inits1.iyrra;
+		sitelim1 = msisa1.maps.perts.iperts.inits1.sitelim;
+		sitenear1 = msisa1.maps.perts.iperts.inits1.sitenear;
+		initpert1 = msisa1.maps.perts.iperts.inits1.initpert;
+		rdinit1 = msisa1.maps.perts.iperts.inits1.rdinit;
+		rtinit1 = msisa1.maps.perts.iperts.inits1.rtinit;
+		ruinit1 = msisa1.maps.perts.iperts.inits1.ruinit;
+		rvinit1 = msisa1.maps.perts.iperts.inits1.rvinit;
+		rwinit1 = msisa1.maps.perts.iperts.inits1.rwinit;
+		patchy1 = msisa1.maps.perts.iperts.inits1.patchy;
+		itherm1 = msisa1.maps.perts.iperts.inits1.itherm;
+		z0in1 = msisa1.maps.perts.iperts.inits1.z0in;
+		ibltest1 = msisa1.maps.perts.iperts.inits1.ibltest;
+		nr1a = msisa1.maps.perts.iperts.inits1.nr1;
+	}
+
         
-            ifstream namelist;
-            string dummy, NCEPmn;
-            string mn1 = "12";
-            NCEPmn = "Nb9008" + mn1 + ".bin";
-
-            msisa1.maps.perts.iperts.inits1.rralist = "rrasites.txt";
-
-            msisa1.maps.perts.iperts.inits1.profile = "RRAanfAnn.txt";
-
-            msisa1.maps.perts.iperts.inits1.h1 = 140;
-
-            msisa1.maps.perts.iperts.inits1.phi1 = 0.45;
-
-            msisa1.maps.perts.iperts.inits1.thet1 = -164.53;
-            
-            msisa1.maps.perts.iperts.inits1.f10 = 230;
-
-           msisa1.maps.perts.iperts.inits1.f10b  = 230;
-
-            msisa1.maps.perts.iperts.inits1.ap = 16.3;
-
-           msisa1.maps.perts.iperts.inits1.s10 = 0;
-
-            msisa1.maps.perts.iperts.inits1.s10b = 0;
-
-           msisa1.maps.perts.iperts.inits1.xm10 = 0;
-
-           msisa1.maps.perts.iperts.inits1.xm10b = 0;
-
-            msisa1.maps.perts.iperts.inits1.y10 = 0;
-
-           msisa1.maps.perts.iperts.inits1.y10b = 0;
-
-           msisa1.maps.perts.iperts.inits1.dstdtc = 0;
-
-            msisa1.maps.perts.iperts.inits1.mn = 1;
-
-            msisa1.maps.perts.iperts.inits1.ida = 1;
-
-            msisa1.maps.perts.iperts.inits1.iyr = 2018;
-
-            msisa1.maps.perts.iperts.inits1.ihro = 0;
-
-            msisa1.maps.perts.iperts.inits1.mino = 0;
-
-            msisa1.maps.perts.iperts.inits1.seco = 0.0;
-
-           msisa1.maps.perts.iperts.inits1.dphi = 0.4;
-
-             msisa1.maps.perts.iperts.inits1.dthet = 1.2;
-
-            msisa1.maps.perts.iperts.inits1.dhgt = -2.0;
-
-             msisa1.maps.perts.iperts.inits1.nmax = 71;
-
-             msisa1.maps.perts.iperts.inits1.delt = 60.0;
-
-            msisa1.maps.perts.iperts.inits1.iopt = 0;
-
-            msisa1.maps.perts.iperts.inits1.iaux = 0;
-
-            msisa1.maps.perts.iperts.inits1.iprt = 1;
-
-            msisa1.maps.perts.iperts.inits1.inpr = 1;
-
-            msisa1.maps.perts.iperts.inits1.icon = 1;
-
-            msisa1.maps.perts.iperts.inits1.NCEPyr = 9715;
-
-            msisa1.maps.perts.iperts.inits1.NCEPhr = 5;
-
-            msisa1.maps.perts.iperts.inits1.mc = 2;
-
-            msisa1.maps.perts.iperts.inits1.rpscale = 1.0;
-
-            msisa1.maps.perts.iperts.inits1.ruscale = 1.0; 
-
-            msisa1.maps.perts.iperts.inits1.rwscale = 1.0;
-
-            msisa1.maps.perts.iperts.inits1.iurra = 1;
-
-            msisa1.maps.perts.iperts.inits1.iyrra = 3;
-
-            msisa1.maps.perts.iperts.inits1.sitelim = 2.5;
-
-            msisa1.maps.perts.iperts.inits1.sitenear = 0.5;
-
-            msisa1.maps.perts.iperts.inits1.initpert = 0;
-
-            msisa1.maps.perts.iperts.inits1.rdinit = 0.0;
-
-            msisa1.maps.perts.iperts.inits1.rtinit = 0.0;
-
-            msisa1.maps.perts.iperts.inits1.ruinit = 0.0;
-
-            msisa1.maps.perts.iperts.inits1.rvinit = 0.0;
-
-            msisa1.maps.perts.iperts.inits1.rwinit = 0.0;
-
-            msisa1.maps.perts.iperts.inits1.patchy = 0.0;
-
-            msisa1.maps.perts.iperts.inits1.itherm = 1;
-
-            msisa1.maps.perts.iperts.inits1.z0in = -1;
-
-            msisa1.maps.perts.iperts.inits1.ibltest = 99;
-
-            
-             //msisa1.maps.perts.iperts.inits1.NCEPpath = msisa1.maps.perts.iperts.inits1.NCEPpath +  NCEPmn;
-             //  msisa1.maps.perts.iperts.inits1.NCEPpath1  = msisa1.maps.perts.iperts.inits1.NCEPpath +  NCEPmn;
-            //start added by victor
-             msisa1.maps.perts.iperts.inits1.ibltest=1;
-            //end added by victor
-
-         /*   if (msisa1.maps.perts.iperts.inits1.ibltest > 1){
-                msisa1.maps.perts.iperts.inits1.ibl.open(iblo.c_str());
-                msisa1.maps.perts.iperts.inits1.ibl << "   Day    LST    Hgt    Lat      Lon   hsrf spdsrf"
-                    " LC     z0   Elmn   El   Elmd     sha blfct  nri   S"
-                    "       ool  ustar    BVfsq    hN   hbl   chb  sigrat"
-                    "  swb   swh spdavsrf sdpsdsrf   tsrf  stsrf" << '\n';
-            }
-*/
-            //Check bounds on z0in value
-            if (msisa1.maps.perts.iperts.inits1.z0in > 0.0){
-                if (msisa1.maps.perts.iperts.inits1.z0in < 1.0e-05) msisa1.maps.perts.iperts.inits1.z0in = 1.0e-05;
-                if (msisa1.maps.perts.iperts.inits1.z0in > 3.0) msisa1.maps.perts.iperts.inits1.z0in = 3.0;
-            }
-
-            //Check sitelim and sitenear
-            if (msisa1.maps.perts.iperts.inits1.sitelim <= 0.0 || msisa1.maps.perts.iperts.inits1.sitenear >= msisa1.maps.perts.iperts.inits1.sitelim){
-                cout << "Bad RRA site limits (sitenear must be < sitelim)  " << msisa1.maps.perts.iperts.inits1.sitenear <<
-                    "  " << msisa1.maps.perts.iperts.inits1.sitelim << '\n';
-                system("pause");
-                exit(1);
-            }
-
-            //Terminate if month out of range
-            if (msisa1.maps.perts.iperts.inits1.mn < 1 || msisa1.maps.perts.iperts.inits1.mn > 12){
-                cout << "Month out of range.  " << mn << '\n';
-                system("pause");
-                exit(1);
-            }
-
-
-            //Terminate if day out of range
-            if ((msisa1.maps.perts.iperts.inits1.ida > iday1[msisa1.maps.perts.iperts.inits1.mn - 1]) || (msisa1.maps.perts.iperts.inits1.ida < 0)){
-                cout << "Bad day input.  " << msisa1.maps.perts.iperts.inits1.ida << '\n';
-                system("pause");
-                exit(1);
-            }
-
-            //Terminate initial hour if out of range
-            if ((msisa1.maps.perts.iperts.inits1.ihro > 23) || (msisa1.maps.perts.iperts.inits1.ihro < 0)){
-                cout << "Bad hour input.  " << msisa1.maps.perts.iperts.inits1.ihro << '\n';
-                system("pause");
-                exit(1);
-            }
-
-            //Terminate if initial minute out of range
-            if ((msisa1.maps.perts.iperts.inits1.mino > 60) || (msisa1.maps.perts.iperts.inits1.mino < 0)){
-                cout << "Bad minute input.  " << msisa1.maps.perts.iperts.inits1.mino << '\n';
-                system("pause");
-                exit(1);
-            }
-
-            //Terminate if initial second out of range
-            if ((msisa1.maps.perts.iperts.inits1.seco > 60.0) || (msisa1.maps.perts.iperts.inits1.seco < 0.0)){
-                cout << "Bad second input.  " << msisa1.maps.perts.iperts.inits1.seco << '\n';
-                system("pause");
-                exit(1);
-            }
-
-            //Terminate if out of range NCEPhr
-            if (msisa1.maps.perts.iperts.inits1.NCEPhr < 0 || msisa1.maps.perts.iperts.inits1.NCEPhr > 5){
-                cout << "Bad NCEPhr value." << '\n';
-                system("pause");
-                exit(1);
-            }
-            //Terminate if auxiliary profile and RRA data turned on
-            if (msisa1.maps.perts.iperts.inits1.iaux > 0 && msisa1.maps.perts.iperts.inits1.iurra > 0){
-                cout << "Can not use RRA data and auxiliary profile data simultaneously."
-                    << '\n';
-                system("pause");
-                exit(1);
-            }
-
-
-            if (msisa1.maps.perts.iperts.inits1.itherm == 1) msisa1.maps.perts.iperts.inits1.therm = "MET";
-            if (msisa1.maps.perts.iperts.inits1.itherm == 2) msisa1.maps.perts.iperts.inits1.therm = "MSIS";
-            if (msisa1.maps.perts.iperts.inits1.itherm == 3) msisa1.maps.perts.iperts.inits1.therm = "JB2008";
-
-            if (msisa1.maps.perts.iperts.inits1.patchy > 0) msisa1.maps.perts.iperts.inits1.patch = "On";
-            if (msisa1.maps.perts.iperts.inits1.patchy == 0) msisa1.maps.perts.iperts.inits1.patch = "Off";
-
-            if (msisa1.maps.perts.iperts.inits1.iyrra == 1) msisa1.maps.perts.iperts.inits1.Ryear = "1983";
-            if (msisa1.maps.perts.iperts.inits1.iyrra == 2) msisa1.maps.perts.iperts.inits1.Ryear = "2006";
-            if (msisa1.maps.perts.iperts.inits1.iyrra == 3) msisa1.maps.perts.iperts.inits1.Ryear = "2013";
-
-            h1a = h1;
-            phi1a = phi1;
-            thet1a = thet1;
-            
-            f101 = msisa1.maps.perts.iperts.inits1.f10;
-            f10b1 = msisa1.maps.perts.iperts.inits1.f10b;
-            ap1 = msisa1.maps.perts.iperts.inits1.ap;
-            s101 = msisa1.maps.perts.iperts.inits1.s10;
-            s10b1 = msisa1.maps.perts.iperts.inits1.s10b;
-            xm101 = msisa1.maps.perts.iperts.inits1.xm10;
-            xm10b1 = msisa1.maps.perts.iperts.inits1.xm10b;
-            y101 = msisa1.maps.perts.iperts.inits1.y10;
-            y10b1 = msisa1.maps.perts.iperts.inits1.y10b;
-            dstdtc1 = msisa1.maps.perts.iperts.inits1.dstdtc;
-            mn2 = msisa1.maps.perts.iperts.inits1.mn;
-            ida1 = msisa1.maps.perts.iperts.inits1.ida;
-            iyr1 = msisa1.maps.perts.iperts.inits1.iyr;
-            ihro1 = msisa1.maps.perts.iperts.inits1.ihro;
-            mino1 = msisa1.maps.perts.iperts.inits1.mino;
-            seco1 = msisa1.maps.perts.iperts.inits1.seco;
-            dphi1 = msisa1.maps.perts.iperts.inits1.dphi;
-            dthet1 = msisa1.maps.perts.iperts.inits1.dthet;
-            dhgt2 = msisa1.maps.perts.iperts.inits1.dhgt;
-            nmax1 = msisa1.maps.perts.iperts.inits1.nmax;
-            delt1 = msisa1.maps.perts.iperts.inits1.delt;
-            iopt1 = msisa1.maps.perts.iperts.inits1.iopt;
-            iaux1 = msisa1.maps.perts.iperts.inits1.iaux;
-            iprt1 = msisa1.maps.perts.iperts.inits1.iprt;
-            inpr1 = msisa1.maps.perts.iperts.inits1.inpr;
-            icon1 = msisa1.maps.perts.iperts.inits1.icon;
-            NCEPyr3 = msisa1.maps.perts.iperts.inits1.NCEPyr;
-            NCEPhr3 = msisa1.maps.perts.iperts.inits1.NCEPhr;
-            mc1 = msisa1.maps.perts.iperts.inits1.mc;
-            rpscale1 = msisa1.maps.perts.iperts.inits1.rpscale;
-            ruscale1 = msisa1.maps.perts.iperts.inits1.ruscale;
-            rwscale1 = msisa1.maps.perts.iperts.inits1.rwscale;
-            iurra1 = msisa1.maps.perts.iperts.inits1.iurra;
-            iyrra1 = msisa1.maps.perts.iperts.inits1.iyrra;
-            sitelim1 = msisa1.maps.perts.iperts.inits1.sitelim;
-            sitenear1 = msisa1.maps.perts.iperts.inits1.sitenear;
-            initpert1 = msisa1.maps.perts.iperts.inits1.initpert;
-            rdinit1 = msisa1.maps.perts.iperts.inits1.rdinit;
-            rtinit1 = msisa1.maps.perts.iperts.inits1.rtinit;
-            ruinit1 = msisa1.maps.perts.iperts.inits1.ruinit;
-            rvinit1 = msisa1.maps.perts.iperts.inits1.rvinit;
-            rwinit1 = msisa1.maps.perts.iperts.inits1.rwinit;
-            patchy1 = msisa1.maps.perts.iperts.inits1.patchy;
-            itherm1 = msisa1.maps.perts.iperts.inits1.itherm;
-            z0in1 = msisa1.maps.perts.iperts.inits1.z0in;
-            ibltest1 = msisa1.maps.perts.iperts.inits1.ibltest;
-            nr1a = msisa1.maps.perts.iperts.inits1.nr1;
-            }
-
     void traj2(double hgt, double lat, double lon, double time, int iupdate, int initonce, double *dmout,
 	double *pmout, double *tmout, double *umout, double *vmout, double *wmout, double *dpout, double *ppout,
 	double *tpout, double *upout, double *vpout, double *wpout, double *dsout, double *psout,
@@ -1703,37 +1638,69 @@ class Atm_ : public  Atm{
 
 vector<Atm_*> Atm_Database;
 
-void createAtm (      const char* base_string_,
-                      const char* Atmos_File_Address_,  //string for atmpath
-                      const char* Range_Ref_Path_Address_, //string for RRA path
+void createAtm (const char* basePath_,     //string for base path of any data
+                const char* atmosFile_,    //string for atmpath
+                const char* rangeRefPath_, //string for RRA path
 
-                      int* Random_Scale_Address, //string for nr1 (monte-carlo seed variable)
-                      double* Solar_Flux_SI_Address, //string for f10
-                      double* Solar_Flux_A_SI_Address, //string forf10b
-                      double*  Geomag_Idx_Address, 
-                      double*  JulDat_Address
-                       ){
+                int* randomScaleAtm, // monte-carlo seed variable
+                int* randomScaleWindHoriz, // monte-carlo seed variable
+                int* randomScaleWindVert, // monte-carlo seed variable
+				
+                double* solarFlux,
+                double* solarFluxAv,
+                double* geomagIdx, 
+                double* euvIndex, 
+                double* euvIndexAv, 
+                double* mgIndex, 
+                double* mgIndexAv, 
+                double* xRayIndex, 
+                double* xRayIndexAv, 
+                double* tempChange, 
+                double* surfRough, 
+				
+                int*    year,
+				int*    month,
+				int*    day,
+				int*    hour,
+				int*    min,
+				double* sec) {
 
-                      string base_string(base_string_);   
-                      string Atmos_File_Address(Atmos_File_Address_);
-                      string Range_Ref_Path_Address(Range_Ref_Path_Address_);
+	string basePath(basePath_);   
+	string atmosFile(atmosFile_);
+	string rangeRefPath(rangeRefPath_);
                     
+	Atm_ * atms_local = new Atm_;
 
+	atms_local->msisa1.maps.perts.iperts.inits1.atmpath = atmosFile; 
+	atms_local->msisa1.maps.perts.iperts.inits1.NCEPpath = basePath + "NCEPdata\\FixedBin\\";
+	atms_local->msisa1.maps.perts.iperts.inits1.rrapath = rangeRefPath;
+	//atms_local->msisa1.maps.perts.iperts.inits1.nr1 = *randomScaleAtm;
+	atms_local->msisa1.maps.perts.iperts.inits1.ap = *geomagIdx; 
+	atms_local->msisa1.maps.perts.iperts.inits1.f10 = *solarFlux;
+	atms_local->msisa1.maps.perts.iperts.inits1.f10b = *solarFluxAv;
+	atms_local->msisa1.maps.perts.iperts.inits1.s10 = *euvIndex;
+	atms_local->msisa1.maps.perts.iperts.inits1.s10b = *euvIndexAv;
+	atms_local->msisa1.maps.perts.iperts.inits1.xm10 = *mgIndex;
+	atms_local->msisa1.maps.perts.iperts.inits1.xm10b = *mgIndexAv;
+	atms_local->msisa1.maps.perts.iperts.inits1.y10 = *xRayIndex;
+	atms_local->msisa1.maps.perts.iperts.inits1.y10b = *xRayIndexAv;
+	atms_local->msisa1.maps.perts.iperts.inits1.dstdtc = *tempChange;
+	atms_local->msisa1.maps.perts.iperts.inits1.z0in = *surfRough;
+	
+	atms_local->msisa1.maps.perts.iperts.inits1.rpscale = *randomScaleAtm;
+	atms_local->msisa1.maps.perts.iperts.inits1.ruscale = *randomScaleWindHoriz; 
+	atms_local->msisa1.maps.perts.iperts.inits1.rwscale = *randomScaleWindVert;
 
-                      Atm_ * atms_local = new Atm_;
+	atms_local->msisa1.maps.perts.iperts.inits1.mn = *month;
+	atms_local->msisa1.maps.perts.iperts.inits1.ida = *day;
+	atms_local->msisa1.maps.perts.iperts.inits1.iyr = *year;
+	atms_local->msisa1.maps.perts.iperts.inits1.ihro = *hour;
+	atms_local->msisa1.maps.perts.iperts.inits1.mino = *min;
+	atms_local->msisa1.maps.perts.iperts.inits1.seco = *sec;
 
-                     
-                      atms_local->msisa1.maps.perts.iperts.inits1.atmpath = Atmos_File_Address; 
-                      atms_local->msisa1.maps.perts.iperts.inits1.NCEPpath = base_string + "NCEPdata\\FixedBin\\";
-                      atms_local->msisa1.maps.perts.iperts.inits1.rrapath = Range_Ref_Path_Address;
-                      atms_local->msisa1.maps.perts.iperts.inits1.nr1 = *Random_Scale_Address;
-                      atms_local->msisa1.maps.perts.iperts.inits1.ap =  *Geomag_Idx_Address; 
-                      atms_local->msisa1.maps.perts.iperts.inits1.f10 =   *Solar_Flux_SI_Address;
-                      atms_local->msisa1.maps.perts.iperts.inits1.f10b =  *Solar_Flux_A_SI_Address;
-                      atms_local->initdata();
-                      Atm_Database.push_back(atms_local);
-
-                  };
+	atms_local->initdata();
+	Atm_Database.push_back(atms_local);
+};
 
 void runAtm(int* index, int* initonce, double* hgt, double* lat, double* lon, double* time, 
 double* dm,  double* pm, double* tm, double* um, double* vm, double* wm, 

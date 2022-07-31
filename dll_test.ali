@@ -1,0 +1,330 @@
+V "GNAT Lib v2011"
+M P W=b
+A -O2
+A -gnatA
+A -mtune=generic
+A -march=pentiumpro
+P SS ZX
+R nnvnnnnnnnnnnnnvnnvvnvnnvvvnnvnnnnvnnnnnnvnnvnnnnnnnnnvnnnvnnvnnnnvnnnnnnnnnnnnnn
+
+U dll_test%b		dll_test.adb		5f064c4a NE OO SU IL
+W ada%s			ada.ads			ada.ali
+W ada.characters%s	a-charac.ads		a-charac.ali
+W ada.characters.handling%s  a-chahan.adb	a-chahan.ali
+W ada.exceptions%s	a-except.adb		a-except.ali
+W ada.strings%s		a-string.ads		a-string.ali
+W ada.strings.fixed%s	a-strfix.adb		a-strfix.ali
+W ada.strings.unbounded%s  a-strunb.adb		a-strunb.ali
+W ada.tags%s		a-tags.adb		a-tags.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+W gnat%s		gnat.ads		gnat.ali
+W gnat.float_control%s	g-flocon.ads		g-flocon.ali
+W interfaces%s		interfac.ads		interfac.ali
+W interfaces.c%s	i-c.adb			i-c.ali
+W system%s		system.ads		system.ali
+W system.exception_table%s  s-exctab.adb	s-exctab.ali
+W system.img_enum_new%s	s-imenne.adb		s-imenne.ali
+W system.img_uns%s	s-imguns.adb		s-imguns.ali
+W system.secondary_stack%s  s-secsta.adb	s-secsta.ali
+W system.soft_links%s	s-soflin.adb		s-soflin.ali
+W system.standard_library%s  s-stalib.adb	s-stalib.ali
+W system.unsigned_types%s  s-unstyp.ads		s-unstyp.ali
+W unchecked_conversion%s
+W win32%s		win32.adb		win32.ali
+W win32.winbase%s	win32-winbase.adb	win32-winbase.ali
+W win32.windef%s	win32-windef.adb	win32-windef.ali
+
+D ada.ads		20110428140902 3ffc8e18
+D a-charac.ads		20110428140858 2d3ec45b
+D a-chahan.ads		20110428140858 1d381dcd
+D a-chlat1.ads		20110428140858 2825df20
+D a-except.ads		20110428140900 4759ecee
+D a-finali.ads		20110428140900 b333d305
+D a-fihema.ads		20110428140900 1940728a
+D a-ioexce.ads		20110428140900 8b9de6cd
+D a-stream.ads		20110428140902 2ca4ee37
+D a-string.ads		20110428140902 90ac6797
+D a-strfix.ads		20110428140902 d07c346e
+D a-strmap.ads		20110428140902 9cb836fb
+D a-strunb.ads		20110428140902 3f91d4c5
+D a-tags.ads		20110428140902 7b33f560
+D a-textio.ads		20110428140902 386df5d4
+D a-unccon.ads		20110428140902 f9eb8f06
+D dll_test.adb		20220731125958 b7a5d867
+D gnat.ads		20110428140904 fd2ad2f1
+D g-flocon.ads		20110428140904 e3483c37
+D interfac.ads		20110428140906 f77d8799
+D i-c.ads		20110428140906 5421119b
+D i-cstrin.ads		20110428140906 341d0ddf
+D i-cstrea.ads		20110428140906 1bd72c32
+D stdarg.ads		20100623202302 4e9a2baf
+D system.ads		20110428140910 bc164b96
+D s-atocou.ads		20110428140906 f69b66ac
+D s-atocou.adb		20110428140906 2cb7797d
+D s-crtl.ads		20110428140906 ac77b159
+D s-exctab.ads		20110428140906 66e51330
+D s-ficobl.ads		20110428140906 443b9d66
+D s-finroo.ads		20110428140906 2dd85ce2
+D s-flocon.ads		20110428140906 e0fc433c
+D s-imenne.ads		20110428140906 8707cbf0
+D s-imguns.ads		20110428140906 9ff43cf7
+D s-maccod.ads		20110428140908 3a1fd69f
+D s-parame.ads		20110428140908 03aa3b01
+D s-pooglo.ads		20110428140908 542f33d0
+D s-secsta.ads		20110428140908 eea35a36
+D s-soflin.ads		20110428140908 607487c5
+D s-stache.ads		20110428140908 596fc1b4
+D s-stalib.ads		20110428140908 f78bcf95
+D s-stoele.ads		20110428140908 facd7d98
+D s-stoele.adb		20110428140908 afc5dc80
+D s-stopoo.ads		20110428140908 5c51faf9
+D s-stratt.ads		20110428140908 aedef97e
+D s-traent.ads		20110428140908 5221ee41
+D s-unstyp.ads		20110428140908 6ae15c76
+D s-wchcon.ads		20110428140910 bfeb2e3d
+D unchconv.ads		20110428140910 ca2f9e18
+D win32.ads		20110224180200 50c24a27
+D win32-utils.ads	20100601190606 35bad25c
+D win32-winbase.ads	20100601190606 fa92f4c1
+D win32-windef.ads	20100601190606 d9b7bdcc
+D win32-winnt.ads	20220714115854 e33a8a48
+X 1 ada.ads
+16K9*Ada 19e8 17|3r6 3r35 4r6 4r35 5r6 5r35 10r6 10r35 14r6 14r33
+X 2 a-charac.ads
+16K13*Characters 18e19 17|3r10 3r39
+X 3 a-chahan.ads
+36K24*Handling 150e28 17|3w21 3r50
+X 10 a-string.ads
+16K13*Strings 35e16 17|4w10 4r39 5r10 5r39 14r10 14r37
+X 11 a-strfix.ads
+18K21*Fixed 251e22 17|5w18 5r47
+X 13 a-strunb.ads
+76K21*Unbounded 489e26 17|14w18 14r45
+79R9*Unbounded_String 473e14 17|30r65
+94V13*To_Unbounded_String{79R9} 17|31s57 32s57 33s57 34s57 36s70 37s70 38s70
+. 39s70 40s70 41s70
+X 15 a-textio.ads
+49K13*Text_IO 471e16 17|10w10 10r39
+52P9*File_Type(369R9)
+123V13*Current_Error{52P9} 17|87s19 89s16 112s22 114s19 139s22 140s19
+142U14*Flush 17|89s10 114s13 140s13
+259U14*Put_Line 17|87s10 112s13 139s13
+263U14*Put_Line 17|251s4 257s4 323s4 406s7 411s4 414s4
+X 17 dll_test.adb
+16U11*dll_test 16b11 415l5 415t13
+19X4 DLL_LOADER_ERROR 90r16 116r16 141r19
+21E9 Name_Decoration_Type 28e45 30r34 46r31 125r14
+21n34 Undecorated{21E9} 46r55 51r70
+22n34 Cdecl{21E9} 31r43
+23n34 Stdcall{21E9} 32r43 36r43
+24n34 Fastcall{21E9} 33r43 37r43
+25n34 Vectorcall{21E9} 38r43
+26n34 Trailing_Underscore{21E9} 39r43
+27n34 Two_Trailing_Underscore{21E9} 40r43
+28n34 Upper_Case{21E9}
+30A9 Decorate_Array(13|79R9)<21E9> 31r24 36r24
+31a4 Prefixes{30A9}
+36a4 Suffixes{30A9}
+44R9 DLL_Handle 48e14 50r30 76r15 79r20 96r16 121r16 130r23 233r36
+45m7 Handle{53|79M12} 50m45 81m14 104r57 135r39
+46e7 Name_Decoration{21E9} 51m45 125r48
+47b7 Name_Decoration_Found{boolean} 52m45
+50r4 Illegal_Handle{44R9} 84r20 134r20 137r20 233r50
+54P9 C_Function_Ptr(21|35I9) 55r24 71r18 99r15 102r18 239r17 243r17 247r17
+58V13 CP{50|83P12} 58b13 59>7 65l8 65t10 81s36 104s65
+59a7 C_Str{21|79A9} 64r17 64r23
+62V16 UC[49|20]{50|80P9} 64s14
+69V13 To_C_Function_Ptr[49|20]{54P9} 104s17
+74V13 DLL_Open{44R9} 74b13 75>7 92l8 92t16 252s20
+75s7 Filename{string} 78r56 88r21
+78a7 C_Filename{21|79A9} 81r39
+79r7 Result{44R9} 81m7 84r10 85r17
+95V13 DLL_Symbol{54P9} 95b13 96>7 97>7 98>7 118l8 118t18 253s37 254s40 255s44
+96r7 Handle{44R9} 104r50
+97s7 Symbol{string} 101r54 113r24
+98b7 Quiet{boolean} 111r17
+101a7 C_Symbol{21|79A9} 104r68
+102p7 Result{54P9} 104m7 108r10 109r17
+120V13 Get_Naming_Convention{string} 120b13 121>7 126l8 126t29
+121r7 Handle{44R9} 125r41
+129U14 DLL_Close 129b14 130=7 144l8 144t17 412s4
+130r7 Handle{44R9} 134r10 135r32 137m10
+132i7 Result{50|147I9} 135m10 138r24
+150P9 DLL_Init_Ptr 182r26 234r35 240r17
+153m9 Base_path{25|64M9}
+154m9 Atmos_File_Address{25|64M9}
+155m9 Range_Ref_Path_Address{25|64M9}
+158m10 Random_Scale_Address{25|64M9}
+159m10 randomScaleWindHoriz{25|64M9}
+160m10 randomScaleWindVert{25|64M9}
+162m10 solarFlux{25|64M9}
+163m10 solarFluxAv{25|64M9}
+164m10 geomagIdx{25|64M9}
+165m10 euvIndex{25|64M9}
+166m10 euvIndexAv{25|64M9}
+167m10 mgIndex{25|64M9}
+168m10 mgIndexAv{25|64M9}
+169m10 xRayIndex{25|64M9}
+170m10 xRayIndexAv{25|64M9}
+171m10 tempChange{25|64M9}
+172m10 surfRough{25|64M9}
+174m10 year{25|64M9}
+175m10 month{25|64M9}
+176m10 day{25|64M9}
+177m10 hour{25|64M9}
+178m10 min{25|64M9}
+179m10 sec{25|64M9}
+184P9 DLL_Compute_Ptr 226r26 235r35 244r17
+187m9 Atm_Database_Index{25|64M9}
+188m9 initonce{25|64M9}
+189m9 hgt{25|64M9}
+190m9 lat{25|64M9}
+191m9 lon{25|64M9}
+192m9 time{25|64M9}
+194m9 dm{25|64M9}
+195m9 pm{25|64M9}
+196m9 tm{25|64M9}
+197m9 um{25|64M9}
+198m9 vm{25|64M9}
+199m9 wm{25|64M9}
+201m9 dp{25|64M9}
+202m9 pp{25|64M9}
+203m9 tp{25|64M9}
+204m9 up{25|64M9}
+205m9 vp{25|64M9}
+206m9 wp{25|64M9}
+208m9 ds{25|64M9}
+209m9 ps{25|64M9}
+210m9 ts{25|64M9}
+211m9 us{25|64M9}
+212m9 vs{25|64M9}
+213m9 ws{25|64M9}
+215m9 dsm{25|64M9}
+216m9 psm{25|64M9}
+217m9 tsm{25|64M9}
+218m9 usm{25|64M9}
+219m9 vsm{25|64M9}
+220m9 wsm{25|64M9}
+222m9 sosm{25|64M9}
+223m9 sosp{25|64M9}
+228P9 DLL_Finalize_Ptr 229r26 236r35 248r17
+233r4 GRAM_Dll{44R9} 252m4 253r49 254r52 255r56 412m15 412r15
+234p4 Dll_INIT{150P9} 253m4 293r7
+235p4 DLL_COMPUTE{184P9} 254m4 366r7
+236p4 DLL_FINALIZE{228P9} 255m4
+238V13 To_DLL_INIT_Ptr[49|20]{150P9} 253s20
+242V13 To_DLL_COMPUTE_Ptr[49|20]{184P9} 254s20
+246V13 To_DLL_FINALIZE_Ptr[49|20]{228P9} 255s23
+260a9 Base_path{string} 293r38
+261a9 Atmos_File_Address{string} 294r38
+262a9 Range_Ref_Path_Address{string} 295r38
+264i9 Random_Scale_Address{integer} 296m22 296r22
+265i9 randomScaleWindHoriz{integer} 297m22 297r22
+266i9 randomScaleWindVert{integer} 298m22 298r22
+271f9 solarFlux{long_float} 299m22 299r22
+272f9 solarFluxAv{long_float} 300m22 300r22
+273f9 geomagIdx{long_float} 301m22 301r22
+274f9 euvIndex{long_float} 302m22 302r22
+275f9 euvIndexAv{long_float} 303m22 303r22
+276f9 mgIndex{long_float} 304m22 304r22
+277f9 mgIndexAv{long_float} 305m22 305r22
+278f9 xRayIndex{long_float} 306m22 306r22
+279f9 xRayIndexAv{long_float} 307m22 307r22
+280f9 tempChange{long_float} 308m22 308r22
+281f9 surfRough{long_float} 309m22 309r22
+283i9 year{integer} 311m22 311r22
+284i14 month{integer} 312m22 312r22
+285i19 day{integer} 313m22 313r22
+286i19 hour{integer} 314m22 314r22
+287i19 min{integer} 315m22 315r22
+288f19 sec{long_float} 316m22 316r22
+326i7 Atm_Database_Index{integer} 367m19 367r19
+327i7 initonce{integer} 368m19 368r19
+328f7 hgt{long_float} 369m19 369r19
+329f7 lat{long_float} 370m19 370r19
+330f7 lon{long_float} 371m19 371r19
+331f7 time{long_float} 372m19 372r19
+334f7 dm{long_float} 374m19 374r19
+335f7 pm{long_float} 375m19 375r19
+336f7 tm{long_float} 376m19 376r19
+337f7 um{long_float} 377m19 377r19
+338f7 vm{long_float} 378m19 378r19
+339f7 wm{long_float} 379m19 379r19
+341f7 dp{long_float} 381m19 381r19
+342f7 pp{long_float} 382m19 382r19
+343f7 tp{long_float} 383m19 383r19
+344f7 up{long_float} 384m19 384r19
+345f7 vp{long_float} 385m19 385r19
+346f7 wp{long_float} 386m19 386r19
+348f7 ds{long_float} 388m19 388r19
+349f7 ps{long_float} 389m19 389r19
+350f7 ts{long_float} 390m19 390r19
+351f7 us{long_float} 391m19 391r19
+352f7 vs{long_float} 392m19 392r19
+353f7 ws{long_float} 393m19 393r19
+355f7 dsm{long_float} 395m19 395r19
+356f7 psm{long_float} 396m19 396r19
+357f7 tsm{long_float} 397m19 397r19
+358f11 usm{long_float} 398m19 398r19
+359f7 vsm{long_float} 399m19 399r19
+360f7 wsm{long_float} 400m19 400r19
+362f7 sosm{long_float} 402m19 402r19
+363f7 sosp{long_float} 403m19 403r19
+X 18 gnat.ads
+34K9*GNAT 17|11r6 82r7 106r7 136r10 318r7 405r7 18|37e9
+X 19 g-flocon.ads
+38K14*Float_Control=38:43 17|11w11 82r12 106r12 136r15 318r12 405r12
+X 20 interfac.ads
+36K9*Interfaces 17|13r6 13r24 54r50 293r20 294r20 295r20 20|171e15
+X 21 i-c.ads
+18K20*C 17|13w17 13r35 54r61 293r31 294r31 295r31 21|230e17
+35I9*int<integer> 17|54r63
+45M9*unsigned_long
+72E9*char<character>
+79A9*char_array(72E9)<60M9> 17|59r15 78r37 101r35
+84V13*To_C{79A9} 17|78s51 101s49 293s33 294s33 295s33
+X 25 system.ads
+37K9*System 17|12w6 12r35 45r57 50r70 62r47 153r32 154r33 155r44 158r36 159r35
+. 160r35 162r24 163r26 164r25 165r24 166r26 167r23 168r25 169r25 170r27 171r26
+. 172r25 174r20 175r21 176r19 177r20 178r19 179r19 187r33 188r24 189r19 190r24
+. 191r22 192r23 194r18 195r17 196r17 197r17 198r18 199r17 201r17 202r17 203r17
+. 204r17 205r17 206r17 208r17 209r17 210r17 211r17 212r17 213r17 215r18 216r18
+. 217r18 218r18 219r18 220r18 222r19 223r19 25|196e11
+64M9*Address 17|62r54 153r39 154r40 155r51 158r43 159r42 160r42 162r31 163r33
+. 164r32 165r31 166r33 167r30 168r32 169r32 170r34 171r33 172r32 174r27 175r28
+. 176r26 177r27 178r26 179r26 187r40 188r31 189r26 190r31 191r29 192r30 194r25
+. 195r24 196r24 197r24 198r25 199r24 201r24 202r24 203r24 204r24 205r24 206r24
+. 208r24 209r24 210r24 211r24 212r24 213r24 215r25 216r25 217r25 218r25 219r25
+. 220r25 222r26 223r26
+66m4*Null_Address{64M9} 17|45r64 50r77
+X 32 s-flocon.ads
+39U14*Reset 17|82s26 106s26 136s29 318s26 405s26
+X 49 unchconv.ads
+17+9 Source 17|70r8 239r7 243r7 247r7
+18+9 Target 17|71r8 240r7 244r7 248r7
+20v10*Unchecked_Conversion 17|9w6 62r26 69r38 238r36 242r39 246r40
+X 50 win32.ads
+36K9*Win32 17|6w6 7r6 7r35 8r6 8r35 45r31 60r15 62r62 88r62 113r69 132r16
+. 138r13 138r33 139r94 50|384e10
+63M12*PVOID{25|64M9}
+71E12*CHAR{21|72E9}
+80P9*PCCH(71E12)
+83P12*LPCSTR{80P9} 17|60r21 62r68
+147I9*BOOL<21|35I9> 17|132r22
+180M12*ULONG{21|45M9}
+181M12*DWORD{180M12} 17|88r68 113r75 139r100
+226N4*TRUE 17|138r39
+X 52 win32-winbase.ads
+25K15*Winbase 17|8w12 8r41 52|5808e18
+1155V13*FreeLibrary{50|147I9} 17|135s20
+1170V13*GetProcAddress{53|117P12} 17|104s35
+1541V13*GetLastError{50|181M12} 17|88s80 113s87 139s112
+2639V13*LoadLibrary=2641:45{53|79M12} 17|81s24
+X 53 win32-windef.ads
+23K15*Windef 17|7w12 7r41 45r37 53|192e17
+79M12*HINSTANCE{54|1152M12} 17|45r44
+115P9*PROC(21|35I9)
+117P12*FARPROC{115P9} 17|70r18
+X 54 win32-winnt.ads
+1152M12*HANDLE{50|63M12}
+

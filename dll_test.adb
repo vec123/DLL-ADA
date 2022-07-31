@@ -154,11 +154,30 @@ procedure dll_test is
         Atmos_File_Address  :in System.Address;
         Range_Ref_Path_Address         :in System.Address;
     
-        Random_Scale_Address  :in System.Address;
-        Solar_Flux_SI_Address :in System.Address;
-        Solar_Flux_A_SI_Address  :in System.Address; 
-        Geomag_Idx_Address  :in System.Address;
-        JulDat_Address : in System.Address
+         
+         Random_Scale_Address  :in System.Address;
+         randomScaleWindHoriz :in System.Address;
+         randomScaleWindVert  :in System.Address;
+
+         solarFlux: in System.Address;
+         solarFluxAv :in System.Address;
+         geomagIdx  :in System.Address; 
+         euvIndex  :in System.Address; 
+         euvIndexAv  :in System.Address; 
+         mgIndex  :in System.Address;
+         mgIndexAv  :in System.Address;
+         xRayIndex  :in System.Address; 
+         xRayIndexAv  :in System.Address; 
+         tempChange  :in System.Address;
+         surfRough  :in System.Address;
+               
+         year  :in System.Address;
+         month  :in System.Address;
+         day  :in System.Address;
+         hour  :in System.Address;
+         min  :in System.Address;
+         sec  :in System.Address
+
         );
    pragma Convention (C, DLL_Init_Ptr);
 
@@ -234,7 +253,7 @@ begin
    Dll_INIT     := To_DLL_INIT_Ptr (DLL_Symbol (GRAM_Dll, "createAtm"));
    DLL_COMPUTE  := To_DLL_COMPUTE_Ptr (DLL_Symbol (GRAM_Dll, "runAtm"));
    DLL_FINALIZE :=    To_DLL_FINALIZE_Ptr (DLL_Symbol (GRAM_Dll, "finalize"));
-   
+
    put_line("Init DLL.");
     declare
         -- define all input and output variables as follows
@@ -242,11 +261,31 @@ begin
         Atmos_File_Address         : constant String := "C:\\Users\\vic-b\\Documents\\Victors\\Job\\Astos\\project\\EarthGRAM2016Version2\\EarthGRAM2016Version2.0\\IOfiles\\";
         Range_Ref_Path_Address              : constant String := "C:\\Users\\vic-b\\Documents\\Victors\\Job\\Astos\\project\\EarthGRAM2016Version2\\EarthGRAM2016Version2.0\\RRAdata\\";
 
-        Random_Scale_Address : aliased Integer := 10;
-        Solar_Flux_SI_Address : aliased Long_Float :=  230.0;
-        Solar_Flux_A_SI_Address : aliased Long_Float := 230.0;    
-        Geomag_Idx_Address : aliased Long_Float := 16.31; 
-        JulDat_Address : aliased Long_Float :=  10.0; 
+        Random_Scale_Address : aliased Integer := 1;
+        randomScaleWindHoriz : aliased Integer := 1;
+        randomScaleWindVert : aliased Integer := 1;
+
+
+
+
+        solarFlux : aliased Long_Float :=  230.0;
+        solarFluxAv :  aliased Long_Float := 230.0;  
+        geomagIdx  : aliased Long_Float := 16.31; 
+        euvIndex  : aliased Long_Float := 0.0; 
+        euvIndexAv  : aliased Long_Float := 0.0; 
+        mgIndex  : aliased Long_Float := 0.0;
+        mgIndexAv  : aliased Long_Float := 0.0;
+        xRayIndex  : aliased Long_Float := 0.0;
+        xRayIndexAv : aliased Long_Float := 0.0;
+        tempChange : aliased Long_Float := 0.0;
+        surfRough  : aliased Long_Float := 0.0;
+				
+        year  :  aliased Integer := 2018;
+	     month : aliased Integer := 1;
+		  day  : aliased Integer := 1;
+		  hour  :aliased Integer  := 0;
+		  min  :aliased Integer := 0;
+		  sec  :aliased Long_Float := 0.0;
 
 
    begin        
@@ -254,12 +293,27 @@ begin
       Dll_INIT(    Interfaces.C.To_C(Base_path)'Address,
                    Interfaces.C.To_C(Atmos_File_Address)'Address,
                    Interfaces.C.To_C(Range_Ref_Path_Address)'Address,
-
-                   Random_Scale_Address'Address,
-                   Solar_Flux_SI_Address'Address,
-                   Solar_Flux_A_SI_Address'Address,
-                   Geomag_Idx_Address'Address,
-                   JulDat_Address'Address
+                     Random_Scale_Address'Address,
+                     randomScaleWindHoriz'Address,
+                     randomScaleWindVert'Address,
+                     solarFlux'Address,
+                     solarFluxAv 'Address,
+                     geomagIdx'Address,
+                     euvIndex'Address,
+                     euvIndexAv'Address,
+                     mgIndex'Address,
+                     mgIndexAv'Address,
+                     xRayIndex'Address, 
+                     xRayIndexAv'Address,
+                     tempChange'Address,
+                     surfRough'Address,
+                           
+                     year'Address,
+                     month'Address,
+                     day'Address,
+                     hour'Address,
+                     min'Address,
+                     sec'Address
                    );
       GNAT.Float_Control.Reset;
    end;
