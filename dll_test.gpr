@@ -1,0 +1,9 @@
+with "win32ada";
+
+project dll_test is
+   for Source_Dirs use (".");
+   for Main use ("dll_test");
+   package Builder is
+      for Default_Switches ("Ada") use ("-O2");
+   end Builder; 
+end dll_test;
