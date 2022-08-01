@@ -45,36 +45,3 @@ data-point.
 
 
 
-ALTERNATIVE:
-[BUILD in Docker:
-
-docker create --name nginx_base -p 80:80 nginx:alpine
-docker images -a
-docker start $DOCKER_ID
-docker cp ../EarthGRAM2016Version2/EarthGRAM2016Version2.0/Source/ $DOCKER_ID:/usr/share/
-docker cp  GRAM-init-run.cpp $DOCKER_ID:/usr/share/GRAM-init-run.cpp
-docker build -f /path/to/a/Dockerfile ]
-
-
-
-Short Term ToDo:
-	x make finalize routine, create Atm_dataset_array
-	x push to git
-	x make .c++ .adp with new set_member_data and createAtm
-
-	x include paramater description
-	o explain nr1 usage
-	o check GRAM-standart outputs
-	o check Atm-array
-
-Long Term ToDo's:
-	-> Launcher-tool and global optimization of cost:
-		mixed integer optimization (allows changing of treibstofftyp, stufenanzahl, triebwerktyp, tanktyp etc.)
-		-> find best launcher
-
-	-> Moon-trajectories:
-		trajectory optimization, global maneuver optimization
-	
-	-> Maybe look into Gradienten-verfahren
-
-	-> Look into UML, direct JAVA-class creation from UML
