@@ -1638,7 +1638,7 @@ class Atm_ : public  Atm{
 
 vector<Atm_*> Atm_Database;
 
-void createAtm (const char* basePath_,     //string for base path of any data
+int createAtm (const char* basePath_,     //string for base path of any data
                 const char* atmosFile_,    //string for atmpath
                 const char* rangeRefPath_, //string for RRA path
 
@@ -1700,6 +1700,8 @@ void createAtm (const char* basePath_,     //string for base path of any data
 
 	atms_local->initdata();
 	Atm_Database.push_back(atms_local);
+    int index = sizeof(Atm_Database)-1;
+    return index;
 };
 
 void runAtm(int* index, int* initonce, double* hgt, double* lat, double* lon, double* time, 
