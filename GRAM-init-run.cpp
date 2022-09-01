@@ -1700,7 +1700,7 @@ int createAtm (const char* basePath_,     //string for base path of any data
 
 	atms_local->initdata();
 	Atm_Database.push_back(atms_local);
-    int index = sizeof(Atm_Database)-1;
+    int index = Atm_Database.size()-1;
     return index;
 };
 
